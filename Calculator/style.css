@@ -1,0 +1,437 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+:root {
+    --bg: #050816;
+    --card: rgba(15, 23, 42, 0.82);
+    --button: rgba(30, 41, 59, 0.8);
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --neon: #00f5ff;
+    --purple: #8b5cf6;
+    --danger: #ef4444;
+    --border: rgba(255,255,255,0.08);
+}
+
+body.light {
+    --bg: #e2e8f0;
+    --card: rgba(255,255,255,0.9);
+    --button: #e2e8f0;
+    --text: #0f172a;
+    --muted: #475569;
+    --border: rgba(15,23,42,0.1);
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at top left, #13213c, transparent 35%),
+        radial-gradient(circle at bottom right, #25134c, transparent 35%),
+        var(--bg);
+
+    color: var(--text);
+
+    transition: 0.4s;
+}
+
+
+/* APP */
+
+.app {
+    width: 100%;
+    max-width: 430px;
+    padding: 20px;
+}
+
+
+/* TOP BAR */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.topbar h1 {
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+.topbar h1 span {
+    color: var(--neon);
+}
+
+.topbar p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.top-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.top-actions button {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: var(--card);
+    color: var(--text);
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.top-actions button:hover {
+    transform: translateY(-3px);
+    border-color: var(--neon);
+}
+
+
+/* CALCULATOR */
+
+.calculator {
+    padding: 18px;
+
+    border: 1px solid var(--border);
+    border-radius: 25px;
+
+    background: var(--card);
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.45),
+        0 0 35px rgba(0,245,255,0.06);
+}
+
+
+/* DISPLAY */
+
+.display-box {
+    min-height: 150px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,245,255,0.08),
+            rgba(139,92,246,0.08)
+        );
+
+    border: 1px solid var(--border);
+
+    margin-bottom: 15px;
+
+    overflow: hidden;
+}
+
+.display-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#modeText {
+    color: var(--neon);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#copyBtn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#expression {
+    margin-top: 20px;
+
+    min-height: 25px;
+
+    text-align: right;
+
+    color: var(--muted);
+
+    font-size: 17px;
+
+    word-break: break-all;
+}
+
+#result {
+    margin-top: 8px;
+
+    text-align: right;
+
+    font-size: 38px;
+    font-weight: 600;
+
+    color: var(--text);
+
+    word-break: break-all;
+}
+
+
+/* MODE BAR */
+
+.mode-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+}
+
+.mode-bar button {
+    height: 35px;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: transparent;
+    color: var(--muted);
+
+    cursor: pointer;
+}
+
+.mode-bar button.active {
+    background: rgba(0,245,255,0.12);
+    color: var(--neon);
+    border-color: var(--neon);
+}
+
+
+/* SCIENTIFIC */
+
+.scientific-keys {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 8px;
+
+    margin-bottom: 10px;
+}
+
+.scientific-keys button {
+    height: 42px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: rgba(30,41,59,0.65);
+
+    color: var(--neon);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.scientific-keys button:hover {
+    background: rgba(0,245,255,0.12);
+}
+
+
+/* MAIN KEYS */
+
+.keys {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+.keys button {
+    height: 60px;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background: var(--button);
+
+    color: var(--text);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: 0.18s;
+}
+
+.keys button:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(0,245,255,0.5);
+}
+
+.keys button:active {
+    transform: scale(0.94);
+}
+
+.operator {
+    color: var(--neon) !important;
+}
+
+.equal {
+    background: linear-gradient(
+        135deg,
+        #00c6ff,
+        #7c3aed
+    ) !important;
+
+    color: white !important;
+}
+
+.danger {
+    color: #ff6b6b !important;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+
+/* HISTORY */
+
+.history-panel {
+    position: fixed;
+
+    top: 0;
+    right: -390px;
+
+    width: 360px;
+    max-width: 90%;
+
+    height: 100vh;
+
+    padding: 25px;
+
+    background: #0b1220;
+
+    border-left: 1px solid var(--border);
+
+    z-index: 1000;
+
+    transition: 0.35s;
+
+    box-shadow: -20px 0 50px rgba(0,0,0,0.3);
+}
+
+.history-panel.open {
+    right: 0;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.history-header button {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.history-item {
+    padding: 15px;
+
+    margin-bottom: 10px;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.05);
+
+    cursor: pointer;
+}
+
+.history-item .old-expression {
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+.history-item .old-result {
+    margin-top: 5px;
+
+    color: var(--neon);
+
+    font-size: 18px;
+}
+
+.empty-history {
+    color: #64748b;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.clear-history {
+    position: absolute;
+
+    bottom: 25px;
+    left: 25px;
+    right: 25px;
+
+    height: 45px;
+
+    border: 1px solid #ef4444;
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #ef4444;
+
+    cursor: pointer;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 450px) {
+
+    .app {
+        padding: 10px;
+    }
+
+    .calculator {
+        padding: 12px;
+    }
+
+    .keys button {
+        height: 55px;
+    }
+
+    #result {
+        font-size: 32px;
+    }
+
+    .history-panel {
+        width: 100%;
+        max-width: 100%;
+    }
+}
